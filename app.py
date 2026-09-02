@@ -214,26 +214,15 @@ JSON schema:
 Scoring guidance: 0-100. Consider the deterministic checks but independently judge the complete resume.
 If no job description is provided, score general ATS readiness and do not claim keyword alignment with a specific role.
 """
-    for attempt in range(4):
-    try:
         response = client.models.generate_content(
-            model=MODEL_NAME,
-            contents=prompt,
-            config=types.GenerateContentConfig(
-                temperature=0.2,
-                response_mime_type="application/json",
-            ),
-        )
-        break
+        model=MODEL_NAME,
+        contents=prompt,
+        config=types.GenerateContentConfig(
+            temperature=0.2,
+            response_mime_type="application/json",
+        ),
+    ) 
 
-    except Exception as e:
-        if "503" in str(e) or "UNAVAILABLE" in str(e):
-            if attempt < 3:
-                time.sleep(5 * (attempt + 1))
-            else:
-                raise
-        else:
-            raise
     result = extract_json(response.text)
     result["ats_score"] = max(0, min(100, int(result.get("ats_score", 0))))
     return result
