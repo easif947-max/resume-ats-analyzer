@@ -1,5 +1,5 @@
 streamlit>=1.45,<2.0
-google-genai>=1.38,<2.0
+google-genai>=1.67,<2.0
 pypdf>=5.0,<7.0
 python-docx>=1.1,<2.0
 PyMuPDF>=1.24,<2.0
