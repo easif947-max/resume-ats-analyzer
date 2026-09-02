@@ -16,7 +16,7 @@ import pytesseract
 from PIL import Image, ImageOps
 
 APP_TITLE = "ResumeForge AI — ATS Resume Analyzer"
-MODEL_NAME = "gemini-2.5-flash"
+MODEL_NAME = "gemini-3.6-flash"
 MAX_TEXT_CHARS = 50000
 
 st.set_page_config(page_title=APP_TITLE, page_icon="📄", layout="wide")
